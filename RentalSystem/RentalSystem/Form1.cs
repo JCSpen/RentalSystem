@@ -22,7 +22,7 @@ namespace RentalSystem
         {
             if(CurrentUser.NewUser)
             {
-                if(UsernameBox != null)
+                if (UsernameBox != null && !(Controller.SearchByValue(UsernameBox.Text, "Users", "Username")))
                 {
                     if(PasswordBox.Text == PasswordRegBox.Text || BoxSwitch)
                     {
@@ -58,7 +58,7 @@ namespace RentalSystem
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a username!");
+                    MessageBox.Show("Please enter a new username!");
                 }
             }
             else
@@ -67,7 +67,19 @@ namespace RentalSystem
                 {
                     CurrentUser.Username = UsernameBox.Text;
                     CurrentUser.Password = PasswordBox.Text;
-                    CurrentUser.ID = Controller.FindUserID(CurrentUser.Username,CurrentUser.Password);
+                    CurrentUser.ID = Controller.FindUserID(CurrentUser.Username, CurrentUser.Password);
+                    if (CurrentUser.ID == 0)
+                    {
+                        MessageBox.Show("Invalid Credentials");
+                    }
+                    else
+                    {
+                        CurrentUser.FirstName = Controller.FindFirstname(CurrentUser.ID);
+                        CurrentUser.LastName = Controller.FindLastname(CurrentUser.ID);
+                        CurrentUser.InsuranceProvider = Controller.FindInsuraceInfo(CurrentUser.ID);
+                        Next = true;
+                        this.Close();
+                    }
                 }
             }
         }
@@ -82,6 +94,11 @@ namespace RentalSystem
                 Collection = Collection + Num.ToString();
             }
             return int.Parse(Collection);
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
