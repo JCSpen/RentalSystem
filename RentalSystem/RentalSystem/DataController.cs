@@ -7,7 +7,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
+using System.Data;
 
 public class DataController
     {
@@ -25,6 +25,16 @@ public class DataController
         OleDbCommand Command = new OleDbCommand(DataSource);
         Connection.Open();
         Command.CommandText = "INSERT INTO Users([ID],Username,[Password],FirstName,LastName,InsuranceProvider) VALUES(" + ID + ",'" + Username + "','" + Password + "','" + FirstName + "','" + LastName + "','" + Insurance + "');";
+        Command.Connection = Connection;
+        Command.ExecuteNonQuery();
+        Connection.Close();
+    }
+
+    public void CreateVehicle(string Make, string Model, string Reg, int Mileage, double Price, int ID)
+    {
+        OleDbCommand Command = new OleDbCommand(DataSource);
+        Connection.Open();
+        Command.CommandText = "INSERT INTO Vehicle([ID],Make,Model,Registration,Mileage,Price,CurrentRentee) VALUES(" + ID + ",'" + Make + "','" + Model + "','" + Reg + "'," + Mileage + "," + Price + ",'None');";
         Command.Connection = Connection;
         Command.ExecuteNonQuery();
         Connection.Close();
@@ -80,6 +90,19 @@ public class DataController
         string result = (string)Command.ExecuteScalar();
         Connection.Close();
         return result;
+    }
+
+    public DataSet FillTable()
+    {
+        OleDbCommand Command = new OleDbCommand(DataSource);
+        var ds = new DataSet();
+        OleDbDataAdapter Adapter = new OleDbDataAdapter(Command);
+        Connection.Open();
+        Command.CommandText = "SELECT * FROM Vehicle;";
+        Command.Connection = Connection;
+        //
+        Connection.Close();
+        return ds;
     }
     private class Visionairy
     {

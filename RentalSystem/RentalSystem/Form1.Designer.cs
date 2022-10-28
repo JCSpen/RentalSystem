@@ -39,7 +39,7 @@
             // 
             this.UsernameBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.UsernameBox.Location = new System.Drawing.Point(71, 27);
-            this.UsernameBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.UsernameBox.Margin = new System.Windows.Forms.Padding(1);
             this.UsernameBox.Name = "UsernameBox";
             this.UsernameBox.PlaceholderText = "Username";
             this.UsernameBox.Size = new System.Drawing.Size(108, 23);
@@ -49,8 +49,9 @@
             // 
             this.PasswordBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PasswordBox.Location = new System.Drawing.Point(71, 54);
-            this.PasswordBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.PasswordBox.Margin = new System.Windows.Forms.Padding(1);
             this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.PlaceholderText = "Password";
             this.PasswordBox.Size = new System.Drawing.Size(108, 23);
             this.PasswordBox.TabIndex = 1;
@@ -59,8 +60,9 @@
             // 
             this.PasswordRegBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PasswordRegBox.Location = new System.Drawing.Point(71, 79);
-            this.PasswordRegBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.PasswordRegBox.Margin = new System.Windows.Forms.Padding(1);
             this.PasswordRegBox.Name = "PasswordRegBox";
+            this.PasswordRegBox.PasswordChar = '*';
             this.PasswordRegBox.PlaceholderText = "Password";
             this.PasswordRegBox.Size = new System.Drawing.Size(108, 23);
             this.PasswordRegBox.TabIndex = 2;
@@ -70,7 +72,7 @@
             // 
             this.SubmitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.SubmitBtn.Location = new System.Drawing.Point(84, 109);
-            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.SubmitBtn.Margin = new System.Windows.Forms.Padding(1);
             this.SubmitBtn.Name = "SubmitBtn";
             this.SubmitBtn.Size = new System.Drawing.Size(79, 22);
             this.SubmitBtn.TabIndex = 3;
@@ -81,7 +83,7 @@
             // NewUserBtn
             // 
             this.NewUserBtn.Location = new System.Drawing.Point(84, 152);
-            this.NewUserBtn.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.NewUserBtn.Margin = new System.Windows.Forms.Padding(1);
             this.NewUserBtn.Name = "NewUserBtn";
             this.NewUserBtn.Size = new System.Drawing.Size(79, 22);
             this.NewUserBtn.TabIndex = 4;
@@ -100,7 +102,7 @@
             this.Controls.Add(this.PasswordRegBox);
             this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.UsernameBox);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(266, 254);
             this.MinimizeBox = false;

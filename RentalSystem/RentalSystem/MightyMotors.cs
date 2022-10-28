@@ -12,9 +12,31 @@ namespace RentalSystem
 {
     public partial class MightyMotors : Form
     {
+        public DataController Controller = new DataController();
         public MightyMotors()
         {
             InitializeComponent();
+        }
+
+        private void MightyMotors_Load(object sender, EventArgs e)
+        {
+            TableView.DataSource = Controller.FillTable();
+        }
+
+        private void AdminSubmitBtn_Click(object sender, EventArgs e)
+        {
+            Controller.CreateVehicle(MakeBox.Text,ModelBox.Text,RegBox.Text,int.Parse(MileageBox.Text),int.Parse(PriceBox.Text),GenerateID());
+        }
+
+        public int GenerateID()
+        {
+            Random RNG = new Random();
+            string Output = "";
+            for(int i = 0; i < 6; i++)
+            {
+                Output = Output + RNG.Next(0, 9).ToString();
+            }
+            return int.Parse(Output);
         }
     }
 }
