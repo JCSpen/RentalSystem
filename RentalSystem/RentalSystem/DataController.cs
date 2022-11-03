@@ -8,10 +8,12 @@ using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data;
+using System.Drawing;
 
 public class DataController
     {
     static string DataSource = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source= " + Application.StartupPath + @"\MightyMotorsDB.accdb";
+    public DataTable Table = new DataTable();
     public OleDbConnection Connection = new OleDbConnection(DataSource);
     Visionairy Scout = new Visionairy();
 
@@ -48,7 +50,7 @@ public class DataController
             Connection.Open();
             Command.CommandText = "SELECT ID FROM Users WHERE(Username = '" + Username + "' AND [Password] = '" + Password + "');";
             Command.Connection = Connection;
-            Command.CommandType = System.Data.CommandType.Text;
+            Command.CommandType = CommandType.Text;
             int getresult = (int)Command.ExecuteScalar();
             int result = getresult;
             Connection.Close();
@@ -63,7 +65,7 @@ public class DataController
         Connection.Open();
         Command.CommandText = "SELECT Firstname FROM Users WHERE(ID = " + ID + ");";
         Command.Connection = Connection;
-        Command.CommandType = System.Data.CommandType.Text;
+        Command.CommandType = CommandType.Text;
         string result = (string)Command.ExecuteScalar();
         Connection.Close();
         return result;
@@ -75,7 +77,7 @@ public class DataController
         Connection.Open();
         Command.CommandText = "SELECT Lastname FROM Users WHERE(ID = " + ID + ");";
         Command.Connection = Connection;
-        Command.CommandType = System.Data.CommandType.Text;
+        Command.CommandType = CommandType.Text;
         string result = (string)Command.ExecuteScalar();
         Connection.Close();
         return result;
@@ -86,24 +88,50 @@ public class DataController
         Connection.Open();
         Command.CommandText = "SELECT InsuranceProvider FROM Users WHERE(ID = " + ID + ");";
         Command.Connection = Connection;
-        Command.CommandType = System.Data.CommandType.Text;
+        Command.CommandType = CommandType.Text;
         string result = (string)Command.ExecuteScalar();
         Connection.Close();
         return result;
     }
 
-    public DataSet FillTable()
+    public void FillTable(DataGridView ListingViewer)
     {
-        OleDbCommand Command = new OleDbCommand(DataSource);
-        var ds = new DataSet();
-        OleDbDataAdapter Adapter = new OleDbDataAdapter(Command);
+        Table.Clear();
+        if (ListingViewer != null)
+        {
+            Table.Clear();
+            ListingViewer.DataSource = null;
+        }
+        string query = "SELECT * FROM Vehicle";
         Connection.Open();
-        Command.CommandText = "SELECT * FROM Vehicle;";
-        Command.Connection = Connection;
-        //
+        OleDbCommand Command = new OleDbCommand(query, Connection);
+        OleDbDataAdapter Adapter = new OleDbDataAdapter(Command);
+        Adapter.Fill(Table);
+        ListingViewer.DataSource = Table;
         Connection.Close();
-        return ds;
     }
+
+    public string[] FetchVehicleData(int ID)
+    {
+        string[] Contents = new string[Table.Columns.Count];
+        Table.Clear();
+        string query = "SELECT * FROM Vehicle WHERE(ID = " + ID + ");";
+        Connection.Open();
+        OleDbCommand Command = new OleDbCommand(query, Connection);
+        OleDbDataAdapter Adapter = new OleDbDataAdapter(Command);
+        Adapter.Fill(Table);
+        for (int i = 0; i < Table.Columns.Count; i++)
+        {
+            Contents[i] = Table.Rows[0][i].ToString();
+        }
+        Connection.Close();
+        return Contents;
+    }
+
+
+
+   
+
     private class Visionairy
     {
         string DataSource = DataController.DataSource;

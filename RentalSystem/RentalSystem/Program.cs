@@ -14,7 +14,7 @@ namespace RentalSystem
             Application.Run(login);
             if(login.Next)
             {
-                Application.Run(new MightyMotors());
+                Application.Run(new MightyMotors(login.CurrentUser));
             }
         }
     }

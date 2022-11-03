@@ -35,6 +35,10 @@
             this.MileageBox = new System.Windows.Forms.TextBox();
             this.PriceBox = new System.Windows.Forms.TextBox();
             this.AdminSubmitBtn = new System.Windows.Forms.Button();
+            this.ClearanceKeyBox = new System.Windows.Forms.TextBox();
+            this.RefreshBtn = new System.Windows.Forms.Button();
+            this.VehicleIDBox = new System.Windows.Forms.TextBox();
+            this.IDBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +49,7 @@
             this.TableView.AllowUserToOrderColumns = true;
             this.TableView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.TableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TableView.Location = new System.Drawing.Point(255, 0);
+            this.TableView.Location = new System.Drawing.Point(244, 0);
             this.TableView.MaximumSize = new System.Drawing.Size(308, 449);
             this.TableView.MinimumSize = new System.Drawing.Size(308, 449);
             this.TableView.Name = "TableView";
@@ -59,40 +63,45 @@
             // 
             this.MakeBox.Location = new System.Drawing.Point(12, 12);
             this.MakeBox.Name = "MakeBox";
-            this.MakeBox.Size = new System.Drawing.Size(237, 23);
+            this.MakeBox.PlaceholderText = "Vehicle Make";
+            this.MakeBox.Size = new System.Drawing.Size(226, 23);
             this.MakeBox.TabIndex = 1;
             // 
             // ModelBox
             // 
             this.ModelBox.Location = new System.Drawing.Point(12, 41);
             this.ModelBox.Name = "ModelBox";
-            this.ModelBox.Size = new System.Drawing.Size(237, 23);
+            this.ModelBox.PlaceholderText = "Vehicle Model";
+            this.ModelBox.Size = new System.Drawing.Size(226, 23);
             this.ModelBox.TabIndex = 2;
             // 
             // RegBox
             // 
             this.RegBox.Location = new System.Drawing.Point(12, 70);
             this.RegBox.Name = "RegBox";
-            this.RegBox.Size = new System.Drawing.Size(237, 23);
+            this.RegBox.PlaceholderText = "Vehicle Registration Plate";
+            this.RegBox.Size = new System.Drawing.Size(226, 23);
             this.RegBox.TabIndex = 3;
             // 
             // MileageBox
             // 
             this.MileageBox.Location = new System.Drawing.Point(12, 99);
             this.MileageBox.Name = "MileageBox";
-            this.MileageBox.Size = new System.Drawing.Size(237, 23);
+            this.MileageBox.PlaceholderText = "Vehicle Mileage";
+            this.MileageBox.Size = new System.Drawing.Size(226, 23);
             this.MileageBox.TabIndex = 4;
             // 
             // PriceBox
             // 
             this.PriceBox.Location = new System.Drawing.Point(12, 128);
             this.PriceBox.Name = "PriceBox";
-            this.PriceBox.Size = new System.Drawing.Size(237, 23);
+            this.PriceBox.PlaceholderText = "Cost to rent";
+            this.PriceBox.Size = new System.Drawing.Size(226, 23);
             this.PriceBox.TabIndex = 5;
             // 
             // AdminSubmitBtn
             // 
-            this.AdminSubmitBtn.Location = new System.Drawing.Point(96, 157);
+            this.AdminSubmitBtn.Location = new System.Drawing.Point(12, 186);
             this.AdminSubmitBtn.Name = "AdminSubmitBtn";
             this.AdminSubmitBtn.Size = new System.Drawing.Size(75, 23);
             this.AdminSubmitBtn.TabIndex = 6;
@@ -100,12 +109,52 @@
             this.AdminSubmitBtn.UseVisualStyleBackColor = true;
             this.AdminSubmitBtn.Click += new System.EventHandler(this.AdminSubmitBtn_Click);
             // 
+            // ClearanceKeyBox
+            // 
+            this.ClearanceKeyBox.Location = new System.Drawing.Point(12, 157);
+            this.ClearanceKeyBox.Name = "ClearanceKeyBox";
+            this.ClearanceKeyBox.PlaceholderText = "Clearance Key";
+            this.ClearanceKeyBox.Size = new System.Drawing.Size(226, 23);
+            this.ClearanceKeyBox.TabIndex = 7;
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Location = new System.Drawing.Point(163, 186);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
+            this.RefreshBtn.TabIndex = 8;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseVisualStyleBackColor = true;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
+            // 
+            // VehicleIDBox
+            // 
+            this.VehicleIDBox.Location = new System.Drawing.Point(558, 12);
+            this.VehicleIDBox.Name = "VehicleIDBox";
+            this.VehicleIDBox.PlaceholderText = "ID of Vehicle";
+            this.VehicleIDBox.Size = new System.Drawing.Size(230, 23);
+            this.VehicleIDBox.TabIndex = 9;
+            // 
+            // IDBtn
+            // 
+            this.IDBtn.Location = new System.Drawing.Point(643, 40);
+            this.IDBtn.Name = "IDBtn";
+            this.IDBtn.Size = new System.Drawing.Size(75, 23);
+            this.IDBtn.TabIndex = 10;
+            this.IDBtn.Text = "Submit";
+            this.IDBtn.UseVisualStyleBackColor = true;
+            this.IDBtn.Click += new System.EventHandler(this.IDBtn_Click);
+            // 
             // MightyMotors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.IDBtn);
+            this.Controls.Add(this.VehicleIDBox);
+            this.Controls.Add(this.RefreshBtn);
+            this.Controls.Add(this.ClearanceKeyBox);
             this.Controls.Add(this.AdminSubmitBtn);
             this.Controls.Add(this.PriceBox);
             this.Controls.Add(this.MileageBox);
@@ -135,5 +184,9 @@
         private TextBox MileageBox;
         private TextBox PriceBox;
         private Button AdminSubmitBtn;
+        private TextBox ClearanceKeyBox;
+        private Button RefreshBtn;
+        private TextBox VehicleIDBox;
+        private Button IDBtn;
     }
 }

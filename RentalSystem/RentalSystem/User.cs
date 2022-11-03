@@ -14,5 +14,18 @@ using System.Threading.Tasks;
     public string InsuranceProvider;
     public bool NewUser;
     public int ID;
+    public Vehicle UserVehicle = new Vehicle();
+
+    public void SetVehicleData(string[] Info)
+    {
+        UserVehicle.ID = int.Parse(Info[0]);
+        UserVehicle.Make = Info[1];
+        UserVehicle.Model = Info[2];
+        UserVehicle.Registration = Info[3];
+        UserVehicle.Mileage = int.Parse(Info[4]);
+        UserVehicle.CurrentlyRented = true;
+        UserVehicle.RenteeName = Username;
+        UserVehicle.Price = int.Parse(Info[6]);
+    }
     }
 

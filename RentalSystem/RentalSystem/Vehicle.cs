@@ -13,5 +13,7 @@ using System.Threading.Tasks;
     public string Registration;
     public bool CurrentlyRented;
     public string RenteeName;
+
+
     }
 
