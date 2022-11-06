@@ -63,8 +63,22 @@ namespace RentalSystem
 
         private void IDBtn_Click(object sender, EventArgs e)
         {
-            string[] VehicleData = Controller.FetchVehicleData(int.Parse(VehicleIDBox.Text));
-            CurrentUser.SetVehicleData(VehicleData);
+            if (RentCheckBox.Checked || InfoCheckBox.Checked)
+            {
+                if (RentCheckBox.Checked && InfoCheckBox.Checked)
+                {
+                    MessageBox.Show("Please select ONLY ONE of the selection boxes");
+                }
+                else
+                {
+                    string[] VehicleData = Controller.FetchVehicleData(int.Parse(VehicleIDBox.Text));
+                    CurrentUser.SetVehicleData(VehicleData);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please tick one of the selection boxes!");
+            }
         }
     }
 }
